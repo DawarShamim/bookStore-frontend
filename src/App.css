@@ -37,7 +37,10 @@
   }
 }
 
+.SidePanel{
+  background-image: url('../public/book-store-background.jpg');
+  background-position: center; 
+  background-size: 100%;
+  background-repeat: no-repeat;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+}
