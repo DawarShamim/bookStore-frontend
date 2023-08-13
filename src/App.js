@@ -2,12 +2,11 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Page404 from './Pages/404Page';
-import LoginPage from './Pages/LoginPage';
+import Trial3 from './Pages/Trial3';
 import NewBook from './Pages/NewBook';
 import Trial from './Pages/Trial';
-import SideBar from "./components/SideBar";
 import Home from "./Pages/HomePage";
-import Trial2 from "./Pages/Trial2";
+import LoginPage from "./Pages/LoginPage";
 
 function App() {
   return (
@@ -21,8 +20,7 @@ function App() {
           {/* <Route path="/Signup" element={<SignupPage/>} /> */}
           <Route path="/NewBook" element={<NewBook />} />
           <Route path="/Trial" element={<Trial />} />
-          <Route path="/SideBar" element={<SideBar />} />
-          <Route path="/Trial2" element={<Trial2 />} />
+          <Route path="/Trial3" element={<Trial3 />} />
           {/*<Route path="/task/card" element={<CardView />} />
           <Route path="/setting" element={<Settings />} /> */}
           <Route path="*" element={<Page404 />} />
