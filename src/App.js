@@ -11,8 +11,6 @@ import Trying from './Pages/Trying';
 
 function App() {
   return (
-
-
     <Router>
       <div className="App">
         <Routes>

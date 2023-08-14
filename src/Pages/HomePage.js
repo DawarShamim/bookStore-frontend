@@ -92,16 +92,24 @@ function Home() {
           onInput={(event) => setSearchText(event.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Search Books"
-          className=" h-12 rounded px-4 block w-full"
+          className=" h-12 rounded px-4 block w-full z-10"
         />
         <button onClick={() => { handleSubmit() }} className="w-1/2 h-12 uppercase  tracking-wider text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
           Search
         </button>
       </div>
 
-      <div className='m-10'>
-        {Results && (
-          <HomeResult results={Results} />)}
+      <div className='m-10 invisible lg:visible'>
+
+
+
+        {Results && (<>
+          <div className='text-4xl  '>Search Results</div>
+          <div>{(Results.length >= 6) && (
+            <div> Top 6 Most similar Results</div>)}
+          </div>
+        <HomeResult results={Results} />
+          </>)}
       </div>
     </div>
   )
