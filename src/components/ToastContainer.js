@@ -8,7 +8,10 @@ function ToastContainer() {
         const newToast = { message, type, id: Date.now() };
         setToasts(prevToasts => [...prevToasts, newToast]);
 
-    };
+        setTimeout(() => {
+            removeToast(newToast.id);
+        }, 3000); // Automatically remove the toast after 5 seconds (adjust the duration as needed)
+    }
 
     const removeToast = id => {
         setToasts(prevToasts => prevToasts.filter(toast => toast.id !== id));
