@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/NavBar';
 import SideBar from '../components/SideBar';
+import Footer from '../components/Footer';
 function App() {
 
     const [formData, setFormData] = useState({
@@ -177,6 +178,7 @@ function App() {
 
                     </div>
                 </section>
+                <Footer />
             </div>
         </div>
     </>

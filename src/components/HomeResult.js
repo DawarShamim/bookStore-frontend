@@ -10,6 +10,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import CardComponent from './CardComponent';
 SwiperCore.use([Navigation]);
 
 const SearchResults = ({ results }) => {
@@ -28,7 +29,8 @@ const SearchResults = ({ results }) => {
 
                 {results.map((result, index) => (
                     <SwiperSlide key={index}>
-                        <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                    <CardComponent item={result}></CardComponent>
+                        {/* <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
                             <img src={BookImage} alt="Book Cover" className="w-full h-40 object-cover" />
                             <div className="px-6 py-4">
                                 <div className="font-bold text-xl mb-2">{result.title}</div>
@@ -42,7 +44,7 @@ const SearchResults = ({ results }) => {
                                     View Details
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
                     </SwiperSlide>
                 ))}
             </Swiper>

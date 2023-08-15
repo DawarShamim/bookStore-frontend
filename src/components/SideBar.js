@@ -9,15 +9,15 @@ import { Link } from "react-router-dom";
 
 function SideBar() {
     const menus = [
-        { name: "dashboard", link: "/Trial2", icon: MdOutlineDashboard },
-        { name: "user", link: "/", icon: AiOutlineUser },
-        { name: "messages", link: "/", icon: FiMessageSquare },
-        { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
-        { name: "File Manager", link: "/", icon: FiFolder },
-        { name: "Cart", link: "/", icon: FiShoppingCart },
-        { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
-        { name: "Setting", link: "/", icon: RiSettings4Line },
-        { name: "Sign Out", link: "/", icon: MdOutlineLogout }
+        { name: "Dashboard", link: "/ADashboard", icon: MdOutlineDashboard },
+        { name: "Stores", link: "/Stores", icon: TbReportAnalytics, margin: true },
+        { name: "Users", link: "/Employees", icon: AiOutlineUser },
+        { name: "Books", link: "/Books", icon: FiMessageSquare },
+        { name: "*File Manager", link: "/", icon: FiFolder },
+        { name: "*Cart", link: "/", icon: FiShoppingCart },
+        { name: "*Saved", link: "/", icon: AiOutlineHeart, margin: true },
+        { name: "Setting", link: "/Settings", icon: RiSettings4Line },
+        { name: "Sign Out", link: "/LoginPage", icon: MdOutlineLogout }
     ];
     const [open, setOpen] = useState(true);
     return (

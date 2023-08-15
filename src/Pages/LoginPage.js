@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -27,7 +28,6 @@ function LoginPage() {
             setErrors((prevErrors) => ({ ...prevErrors, Password: '*Enter Password' }));
             HasErrors = true;
         }
-
         return !HasErrors;
     };
 
@@ -65,22 +65,20 @@ function LoginPage() {
             //     })
             //     .catch(error => {
             //         setErrors((prevErrors) => ({ ...prevErrors, Invalid: 'Incorrect Email Address or Password' }));
-
             //     })
-
         }
     };
 
-
-    return (<div className='my-9'>
-        <Navbar />
-        <div className="py-20 px-40">
-            <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
-                <div className="hidden lg:block lg:w-1/2 bg-cover SidePanel"></div>
-                <div className="w-full p-8 lg:w-1/2">
-                    {/* <h2 className="text-2xl font-semibold text-gray-700 text-center">Brand</h2> */}
-                    <p className="text-xl text-gray-600 text-center">Welcome back!</p>
-                    {/* <a href="#" className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+    return (    
+        <div className='flex flex-col h-screen'>
+            <Navbar />
+            <div className="flex-1 py-40 px-40 bg-slate-700">
+                <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+                    <div className="hidden lg:block lg:w-1/2 bg-cover SidePanel"></div>
+                    <div className="w-full p-8 lg:w-1/2">
+                        {/* <h2 className="text-2xl font-semibold text-gray-700 text-center">Brand</h2> */}
+                        <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+                        {/* <a href="#" className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
                 <div className="px-4 py-3">
                     <svg className="h-6 w-6" viewBox="0 0 40 40">
                         <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#FFC107"/>
@@ -91,56 +89,59 @@ function LoginPage() {
                 </div>
                 <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
             </a> */}
-                    <div className="mt-4 flex items-center justify-between">
-                        <span className="border-b w-1/5 lg:w-1/4"></span>
-                        <a className="text-xs text-center text-gray-500 uppercase">or login with email</a>
-                        <span className="border-b w-1/5 lg:w-1/4"></span>
-                    </div>
-                    <div className="mt-4">
-                        <div className="flex justify-between">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
-                            <a href="#" className="text-xs text-gray-500"></a>
+                        <div className="mt-4 flex items-center justify-between">
+                            <span className="border-b w-1/5 lg:w-1/4"></span>
+                            <a className="text-xs text-center text-gray-500 uppercase">or login with email</a>
+                            <span className="border-b w-1/5 lg:w-1/4"></span>
                         </div>
-                        <input
-                            name="Email"
-                            value={formData.Email}
-                            onChange={handleFieldChange}
-                            onKeyDown={handleKeyDown}
-                            className={`bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border ${Errors.Email ? "border-red-700" : "border-gray-300"} rounded py-2 px-4 block w-full appearance-none`}
-                            type="email" />
-                        {Errors.Email && <p className="text-[#FF9494] ">{Errors.Email}</p>}
-                    </div>
-                    <div className="mt-4">
-                        <div className="flex justify-between">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                            {/* Important */}
-                            <a href="#" className="text-xs text-gray-500">Forget Password?</a>
+                        <div className="mt-4">
+                            <div className="flex justify-between">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                                <a href="#" className="text-xs text-gray-500"></a>
+                            </div>
+                            <input
+                                name="Email"
+                                value={formData.Email}
+                                onChange={handleFieldChange}
+                                onKeyDown={handleKeyDown}
+                                className={`bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border ${Errors.Email ? "border-red-700" : "border-gray-300"} rounded py-2 px-4 block w-full appearance-none`}
+                                type="email" />
+                            {Errors.Email && <p className="text-[#FF9494] ">{Errors.Email}</p>}
                         </div>
-                        <input
-                            name="Password"
-                            value={formData.Password}
-                            onChange={handleFieldChange}
-                            onKeyDown={handleKeyDown}
-                            className={`bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border ${Errors.Password ? "border-red-700" : "border-gray-300"} rounded py-2 px-4 block w-full appearance-none`}
-                            type="password"
+                        <div className="mt-4">
+                            <div className="flex justify-between">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                                {/* Important */}
+                                <a href="#" className="text-xs text-gray-500">Forget Password?</a>
+                            </div>
+                            <input
+                                name="Password"
+                                value={formData.Password}
+                                onChange={handleFieldChange}
+                                onKeyDown={handleKeyDown}
+                                className={`bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border ${Errors.Password ? "border-red-700" : "border-gray-300"} rounded py-2 px-4 block w-full appearance-none`}
+                                type="password"
 
-                        />
-                        {Errors.Password && <p className="text-[#FF9494] ">{Errors.Password}</p>}
-                        {Errors.Invalid && <p className="text-[#FF9494] ">{Errors.Invalid}</p>}
-                    </div>
-                    <div className="mt-8">
-                        <button
-                            onClick={handleSubmit}
-                            className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Login</button>
-                    </div>
-                    <div className="mt-4 flex items-center justify-between">
-                        <span className="border-b w-1/5 md:w-1/4"></span>
-                        <a onClick={() => { handlePress('/signup') }} className="cursor-pointer text-xs text-gray-500 uppercase">or sign up</a>
-                        <span className="border-b w-1/5 md:w-1/4"></span>
+                            />
+                            {Errors.Password && <p className="text-[#FF9494] ">{Errors.Password}</p>}
+                            {Errors.Invalid && <p className="text-[#FF9494] ">{Errors.Invalid}</p>}
+                        </div>
+                        <div className="mt-8">
+                            <button
+                                onClick={handleSubmit}
+                                className="tracking-wider font-bold w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80  rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                Login</button>
+                        </div>
+                        <div className="mt-4 flex items-center justify-between">
+                            <span className="border-b w-1/5 md:w-1/4"></span>
+                            <a onClick={() => { handlePress('/Signup') }} className="cursor-pointer text-xs text-gray-500 uppercase">or sign up</a>
+                            <span className="border-b w-1/5 md:w-1/4"></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div></div>
+            <Footer/>
+        </div>
     );
 };
 

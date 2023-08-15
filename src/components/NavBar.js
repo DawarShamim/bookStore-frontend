@@ -15,7 +15,7 @@ function Navbar() {
 
   return (<>
 
-    <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 ">
+    <nav className="fixed top-0 z-50 w-full shadow-neutral-800 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 ">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start">
@@ -65,7 +65,7 @@ function Navbar() {
                     </li>
                     <li>
                       <a
-                        onClick={()=>handlePress("/signup")}
+                        onClick={()=>handlePress("/Signup")}
                         className="block py-2 px-4 hover:bg-gray-100"
                       >
                         Sign Up
