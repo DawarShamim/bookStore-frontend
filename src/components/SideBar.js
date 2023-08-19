@@ -17,7 +17,7 @@ function SideBar() {
         { name: "*Cart", link: "/", icon: FiShoppingCart },
         { name: "*Saved", link: "/", icon: AiOutlineHeart, margin: true },
         { name: "Setting", link: "/Settings", icon: RiSettings4Line },
-        { name: "Sign Out", link: "/LoginPage", icon: MdOutlineLogout }
+        { name: "Sign Out", link: "/login", icon: MdOutlineLogout }
     ];
     const [open, setOpen] = useState(true);
     return (

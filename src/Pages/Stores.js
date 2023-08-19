@@ -42,7 +42,7 @@ function Stores() {
         <div className='flex bg-slate-700'>
             <SideBar />
             <div className="flex-grow">
-                <div className="m-20">
+                <div className="m-20 h-4/6">
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -119,10 +119,7 @@ function Stores() {
                                         <td className="px-6 py-4">{store.employees}</td>
                                         <td className="px-6 py-4">{store.sales}</td>
                                         <td className="px-6 py-4 text-right">
-                                            <a
-                                                href="#"
-                                                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                            >
+                                            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                                 Edit
                                             </a>
                                         </td>

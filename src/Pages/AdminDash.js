@@ -21,7 +21,7 @@ function AdminDash() {
                             data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
                             data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
                         </canvas> */}
-                        <ChartComponent/>
+                        {/* <ChartComponent/> */}
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Total Sales */}

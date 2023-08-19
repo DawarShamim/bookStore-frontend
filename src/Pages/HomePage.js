@@ -4,7 +4,7 @@ import HomeResult from '../components/HomeResult';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import Footer from '../components/Footer';
 
-function Trying() {
+function Home() {
   const [searchText, setSearchText] = useState('');
   const [Results, setResults] = useState([]);
   useEffect(() => {
@@ -68,27 +68,28 @@ function Trying() {
             <h1 className="text-4xl font-semibold mb-4">Explore a World of Books</h1>
             <p className="text-lg mb-8">Discover our vast collection of Books</p>
             <a
-              to="/browse"
+              to="/login"
               className="cursor-pointer bg-white text-blue-600 hover:bg-blue-100 text-sm font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out"
             >
-              Get Started
+              Explore Now
             </a>
           </div>
         </section>
 
         {/* Featured Books Section */}
-        <section className="py-16">
+        <section className="py-10">
+          <div className='p-2'>
+            <h2 className="text-2xl font-semibold mb-6 text-white">Featured Books</h2>
+          </div>
           <HomeResult results={Results} />
         </section>
 
-        {/* Search Results */}
         <div className="flex p-10 space-x-9 ">
           <ReactSearchAutocomplete
             items={[
               { id: 0, name: 'Book 1' },
               { id: 1, name: 'Book 2' },
               { id: 2, name: 'Book 3' },
-              // Add more items here
             ]}
             onSelect={(item) => handleSearch(item.name)}
             inputValue={searchText}
@@ -104,7 +105,7 @@ function Trying() {
             Search
           </button>
         </div>
-        {Secondary && (
+        {(Secondary.length !== 0) && (
           <section className="py-5">
             <div className="container mx-auto text-center">
               <h2 className="text-2xl font-semibold mb-6 text-white">Search Results</h2>
@@ -127,7 +128,14 @@ function Trying() {
                 ))}
               </div>
             </div>
-          </section>)}
+            <div className="p-6">
+              <a to="/login" className="cursor-pointer bg-white text-blue-600 hover:bg-blue-100 text-sm font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out">
+                Show More Results
+              </a>
+            </div>
+          </section>
+        )
+        }
 
       </div>
 
@@ -151,4 +159,4 @@ function Trying() {
   );
 }
 
-export default Trying;
+export default Home;

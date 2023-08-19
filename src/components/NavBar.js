@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavBar_Icon from "../Assets/NavBar_Icon.png"
 
 function Navbar() {
 
@@ -19,8 +20,8 @@ function Navbar() {
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start">
-            <a href="https://flowbite.com" className="flex ml-2 md:mr-24">
-              <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="FlowBite Logo" />
+            <a href="/" className="flex ml-2 md:mr-24">
+              <img src={NavBar_Icon} className="h-8 mr-3" alt="FlowBite Logo" />
               <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">E-Book Store</span>
             </a>
           </div>

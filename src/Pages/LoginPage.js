@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { setJwtToken, getJwtToken, removeJwtToken } from '../Utils/cookieUtils';
+import loginService from "../Services/AuthService";
+
+
 
 function LoginPage() {
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const handlePress = (Navigate_to) => {
         navigate(Navigate_to);
@@ -44,32 +50,32 @@ function LoginPage() {
         }
     };
 
-    const handleSubmit = () => {
-        // console.log(formData);
-        const isValid = Validator();
+    const handleSubmit = async () => {
+        //Important Uncomment
+        // const isValid = Validator();
+        setIsLoading(true);
+        const isValid = true;
         if (isValid) {
-            console.log("API here");
-            // axios({
-            //     method: 'post',
-            //     url: baseURL + 'api/Login',
-            //     timeout: 10000,
-            //     data: formData
-            // })
-            //     .then(response => {
-            //         // Important
-            //         // saveToken(response.data.result.token)
-            //         if (response.request.status === 200) {
-            //             console.log("Auth Done")
-            //             // navigate('/task/card');
-            //         }
-            //     })
-            //     .catch(error => {
-            //         setErrors((prevErrors) => ({ ...prevErrors, Invalid: 'Incorrect Email Address or Password' }));
-            //     })
+            try {
+                const payload = {
+                    usernameOrEmail: "mdawar",
+                    password: "ammi7272",
+                };
+                // important Uncomment
+                // const token = await loginService(formData);
+                const token = await loginService(payload);
+                console.log(token);
+
+                setJwtToken(token);
+                navigate('/ADashboard');
+            } catch (error) {
+                setErrors((prevErrors) => ({ ...prevErrors, Invalid: error.message }));
+            }
         }
+        setIsLoading(false);
     };
 
-    return (    
+    return (
         <div className='flex flex-col h-screen'>
             <Navbar />
             <div className="flex-1 py-40 px-40 bg-slate-700">
@@ -129,8 +135,14 @@ function LoginPage() {
                         <div className="mt-8">
                             <button
                                 onClick={handleSubmit}
-                                className="tracking-wider font-bold w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80  rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                                Login</button>
+                                disabled={isLoading} // Disable the button while loading
+                                className={`tracking-wider font-bold w-full text-white ${isLoading
+                                        ? 'bg-gray-300 cursor-not-allowed' // Change button style when loading
+                                        : 'bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80'
+                                    } rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2`}
+                            >
+                                {isLoading ? 'Loading...' : 'Login'}
+                            </button>
                         </div>
                         <div className="mt-4 flex items-center justify-between">
                             <span className="border-b w-1/5 md:w-1/4"></span>
@@ -140,7 +152,7 @@ function LoginPage() {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 };
