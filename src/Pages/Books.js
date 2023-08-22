@@ -35,6 +35,9 @@ function Books() {
 
         return results;
     };
+    // const results =BookCatalogueService();
+    // setResults(results);
+
     return (
         <div className='flex bg-slate-700'>
             <SideBar />
@@ -43,17 +46,12 @@ function Books() {
                 <div className="min-h-screen py-12 px-4">
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div >
-                            <BooksCatalogue title= {"Most Popular"} books={Results} Invert={true}/>
-                            <BooksCatalogue title={"New Arrivals"} books={Results} Invert={false}/>
-                            <BooksCatalogue title={"For Kids"} books={Results} Invert={true}/>
-
+                            <BooksCatalogue title={"Most Popular"} books={Results} Invert={true} />
+                            <BooksCatalogue title={"New Arrivals"} books={Results} Invert={false} />
+                            <BooksCatalogue title={"For Kids"} books={Results} Invert={true} />
                         </div>
-
-                        
                     </div>
                 </div>
-
-
                 <Footer />
             </div>
         </div>

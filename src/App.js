@@ -14,6 +14,7 @@ import Signup from './Pages/Signup';
 import Books from './Pages/Books';
 import Authors from './Pages/Authors';
 
+
 import Trial from './Pages/Trial';
 import Trying from './Pages/Trying';
 

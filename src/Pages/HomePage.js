@@ -68,7 +68,7 @@ function Home() {
             <h1 className="text-4xl font-semibold mb-4">Explore a World of Books</h1>
             <p className="text-lg mb-8">Discover our vast collection of Books</p>
             <a
-              to="/login"
+              href="/login"
               className="cursor-pointer bg-white text-blue-600 hover:bg-blue-100 text-sm font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out"
             >
               Explore Now
@@ -129,7 +129,7 @@ function Home() {
               </div>
             </div>
             <div className="p-6">
-              <a to="/login" className="cursor-pointer bg-white text-blue-600 hover:bg-blue-100 text-sm font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out">
+              <a href="/login" className="cursor-pointer bg-white text-blue-600 hover:bg-blue-100 text-sm font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out">
                 Show More Results
               </a>
             </div>
@@ -144,8 +144,7 @@ function Home() {
         <div className="container mx-auto text-center">
           <h2 className="text-2xl font-semibold mb-6">Visit Our Store</h2>
           <p className="text-lg mb-8">Explore our Bookstore locations near you.</p>
-          <a
-            to="/store-locator"
+          <a href="/login"
             className="cursor-pointer bg-white text-blue-600 hover:bg-blue-100 text-sm font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out"
           >
             Find a Store

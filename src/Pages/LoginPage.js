@@ -64,8 +64,6 @@ function LoginPage() {
                 // important Uncomment
                 // const token = await loginService(formData);
                 const token = await loginService(payload);
-                console.log(token);
-
                 setJwtToken(token);
                 navigate('/ADashboard');
             } catch (error) {

@@ -23,7 +23,7 @@ const SearchResults = ({ results }) => {
             spaceBetween={50}
             slidesPerView={4}
             navigation
-            pagination={{ clickable: true }}
+            pagination={{ clickable: true,bulletActiveClass: 'pagination-active'}}
             scrollbar={{ draggable: true }}
         // onSwiper={(swiper) => console.log(swiper)}
         // onSlideChange={() => console.log('slide change')}

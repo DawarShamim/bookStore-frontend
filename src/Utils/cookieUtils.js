@@ -12,13 +12,14 @@ const EXPIRATION_TIME = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
 
 export const setJwtToken = (token) => {
   const expirationDate = new Date(Date.now() + EXPIRATION_TIME);
+  cookie.set(TOKEN_KEY,token);
 
-  cookie.set(TOKEN_KEY, token, {
-    expires: expirationDate,
-    secure: true,
-    sameSite: 'strict',
-    httpOnly: true
-  });
+  // cookie.set(TOKEN_KEY, token, {
+  //   expires: expirationDate,
+  //   secure: true,
+  //   sameSite: 'strict',
+  //   httpOnly: true
+  // });
   const decoded = jwt_decode(token);
   console.log("decoded",decoded);
 };

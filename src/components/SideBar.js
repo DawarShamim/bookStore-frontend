@@ -7,17 +7,19 @@ import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+
+
 function SideBar() {
     const menus = [
         { name: "Dashboard", link: "/ADashboard", icon: MdOutlineDashboard },
         { name: "Stores", link: "/Stores", icon: TbReportAnalytics, margin: true },
         { name: "Users", link: "/Employees", icon: AiOutlineUser },
         { name: "Books", link: "/Books", icon: FiMessageSquare },
-        { name: "*File Manager", link: "/", icon: FiFolder },
+        { name: "Authors", link: "/Authors", icon: FiFolder },
         { name: "*Cart", link: "/", icon: FiShoppingCart },
         { name: "*Saved", link: "/", icon: AiOutlineHeart, margin: true },
         { name: "Setting", link: "/Settings", icon: RiSettings4Line },
-        { name: "Sign Out", link: "/login", icon: MdOutlineLogout }
+        { name: "Sign Out", link:"/loggingout", icon: MdOutlineLogout }
     ];
     const [open, setOpen] = useState(true);
     return (

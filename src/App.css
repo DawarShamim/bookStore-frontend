@@ -70,3 +70,33 @@
   background-color: red;
 }
 
+/* Style the navigation buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: transparent;
+  color: #000; /* Set the color you want for the buttons */
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 75%;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s;
+  overflow: hidden;
+}
+
+/* Style the circular container */
+.swiper-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Apply styles to the navigation buttons on hover */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: #ffffff; /* Set the color you want on hover */
+}
