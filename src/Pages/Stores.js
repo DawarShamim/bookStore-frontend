@@ -1,7 +1,13 @@
 import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
+import { useState } from "react";
+import TableLayout from "../components/TableLayout";
+import StoreDescriptionBox from "../components/StoreDescriptionBox";
 
 function Stores() {
+    const [Descriptionbox, setDescriptionbox] = useState(false);
+    const [StoreDetails, setStoreDetails] = useState('');
+
     const StoreData = [
         {
             "id": 1,
@@ -38,14 +44,26 @@ function Stores() {
         // Add more store objects as needed
     ];
 
+    const Keys = ["name", "city", "sales", "employees"];
+
+
+    const openDescriptionBox = (Store) => {
+        setDescriptionbox(true);
+        setStoreDetails(Store);
+    };
+
+    const closeDescriptionBox = () => {
+        setDescriptionbox(false);
+    };
+
     return (
         <div className='flex bg-slate-700'>
             <SideBar />
             <div className="flex-grow">
                 <div className="m-20 h-4/6">
-                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg flex">
+                        <table className="w-full text-sm text-left text-gray-500 ">
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
                                         Store name
@@ -103,30 +121,12 @@ function Stores() {
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {StoreData.map((store) => (
-                                    <tr
-                                        key={store.id}
-                                        className="bg-white  hover:bg-slate-400 border-b dark:bg-gray-800 dark:border-gray-700"
-                                    >
-                                        <th
-                                            scope="row"
-                                            className="px-6 py-4  font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                                        >
-                                            {store.name}
-                                        </th>
-                                        <td className="px-6 py-4">{store.city}</td>
-                                        <td className="px-6 py-4">{store.employees}</td>
-                                        <td className="px-6 py-4">{store.sales}</td>
-                                        <td className="px-6 py-4 text-right">
-                                            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                Edit
-                                            </a>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
+                            <TableLayout keys={Keys} Data={StoreData} openDescriptionBox={openDescriptionBox} />
                         </table>
+                        {Descriptionbox && (
+                            <div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
+                                <StoreDescriptionBox Store={StoreDetails} closeDescriptionBox={closeDescriptionBox} />
+                            </div>)}
                     </div>
                 </div>
                 <Footer />
