@@ -13,7 +13,7 @@ function SideBar() {
     const menus = [
         { name: "Dashboard", link: "/ADashboard", icon: MdOutlineDashboard },
         { name: "Stores", link: "/Stores", icon: TbReportAnalytics, margin: true },
-        { name: "Users", link: "/Employees", icon: AiOutlineUser },
+        { name: "Employees", link: "/Employees", icon: AiOutlineUser },
         { name: "Books", link: "/Books", icon: FiMessageSquare },
         { name: "Authors", link: "/Authors", icon: FiFolder },
         { name: "*Cart", link: "/", icon: FiShoppingCart },
@@ -23,10 +23,9 @@ function SideBar() {
     ];
     const [open, setOpen] = useState(false);
     return (
-        <section className="flex gap-6 ">
+        <section className="flex gap-6 z-50">
             <div className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72 " : "w-16 "
                 } duration-500 text-gray-100 px-4`}>
-
                 <div className="pt-5 flex ">
                     {open && ( 
                         <div className={`px-4 text-white font-semibold flex justify-start ${open ? "w-72 text-xl" : "hidden overflow-hidden"} duration-500`}>
@@ -68,7 +67,6 @@ function SideBar() {
                     ))}
                 </div>
             </div>
-
         </section>
     );
 };

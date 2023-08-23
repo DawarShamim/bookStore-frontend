@@ -4,52 +4,51 @@ import { useState } from "react";
 import TableLayout from "../components/TableLayout";
 import StoreDescriptionBox from "../components/StoreDescriptionBox";
 
-function Stores() {
+function Employees() {
     const [Descriptionbox, setDescriptionbox] = useState(false);
-    const [StoreDetails, setStoreDetails] = useState('');
+    const [EmployeeDetails, setEmployeeDetails] = useState('');
 
-    const StoreData = [
+    const EmployeeData = [
         {
             "id": 1,
-            "name": "Bookstore Outlet A",
-            "city": "New York",
-            "sales": 15000,
-            "orders": 1200,
+            "Store_Name": "Bookstore Outlet A",
+            "name": "New York",
+            "Employee_Number": 15000,
+            "contact": 1200,
             "employees": 850
         },
         {
             "id": 2,
-            "name": "Bookstore Outlet B",
-            "city": "Los Angeles",
-            "sales": 18000,
-            "orders": 1400,
+            "Store_Name": "Bookstore Outlet B",
+            "name": "Los Angeles",
+            "Employee_Number": 18000,
+            "contact": 1400,
             "employees": 950
         },
         {
             "id": 3,
-            "name": "Bookstore Outlet C",
-            "city": "London",
-            "sales": 12000,
-            "orders": 1000,
+            "Store_Name": "Bookstore Outlet C",
+            "name": "London",
+            "Employee_Number": 12000,
+            "contact": 1000,
             "employees": 700
         },
         {
             "id": 4,
-            "name": "Bookstore Outlet D",
-            "city": "Sydney",
-            "sales": 22000,
-            "orders": 1600,
+            "Store_Name": "Bookstore Outlet D",
+            "name": "Sydney",
+            "Employee_Number": 22000,
+            "contact": 1600,
             "employees": 1100
         }
-        // Add more store objects as needed
+      
     ];
+    const Keys = ["name", "Employee_Number", "Store_Name", "contact"];
 
-    const Keys = ["name", "city", "sales", "employees"];
 
-
-    const openDescriptionBox = (Store) => {
+    const openDescriptionBox = (Employee) => {
         setDescriptionbox(true);
-        setStoreDetails(Store);
+        setEmployeeDetails(Employee);
     };
 
     const closeDescriptionBox = () => {
@@ -66,11 +65,11 @@ function Stores() {
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        Store name
+                                        Employee Name
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                         <div className="flex items-center">
-                                            City
+                                            Employee Number
                                             <a href="#">
                                                 <svg
                                                     className="w-3 h-3 ml-1.5"
@@ -86,7 +85,7 @@ function Stores() {
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                         <div className="flex items-center">
-                                            Employees
+                                            Store Name
                                             <a href="#">
                                                 <svg
                                                     className="w-3 h-3 ml-1.5"
@@ -102,7 +101,7 @@ function Stores() {
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                         <div className="flex items-center">
-                                            Sales
+                                            Contact
                                             <a href="#">
                                                 <svg
                                                     className="w-3 h-3 ml-1.5"
@@ -121,11 +120,11 @@ function Stores() {
                                     </th>
                                 </tr>
                             </thead>
-                            <TableLayout keys={Keys} Data={StoreData} openDescriptionBox={openDescriptionBox} />
+                            <TableLayout keys={Keys} Data={EmployeeData} openDescriptionBox={openDescriptionBox} />
                         </table>
                         {Descriptionbox && (
                             <div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
-                                <StoreDescriptionBox Store={StoreDetails} closeDescriptionBox={closeDescriptionBox} />
+                                <StoreDescriptionBox Store={EmployeeDetails} closeDescriptionBox={closeDescriptionBox} />
                             </div>)}
                     </div>
                 </div>
@@ -134,4 +133,4 @@ function Stores() {
         </div>);
 };
 
-export default Stores;
+export default Employees;

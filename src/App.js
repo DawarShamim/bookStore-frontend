@@ -13,6 +13,7 @@ import Stores from './Pages/Stores';
 import Signup from './Pages/Signup';
 import Books from './Pages/Books';
 import Authors from './Pages/Authors';
+import Employees from './Pages/Employees';
 
 
 import Trial from './Pages/Trial';
@@ -33,6 +34,7 @@ function App() {
           <Route path ="/Signup" element ={<Signup/>}/>
           <Route path ="/Books" element ={<Books/>}/>
           <Route path="/Authors" element={<Authors />}/>
+          <Route path="/Employees" element={<Employees/>}/>
           
           <Route path="*" element={<Page404 />} />
           
