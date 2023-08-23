@@ -21,13 +21,13 @@ function SideBar() {
         { name: "Setting", link: "/Settings", icon: RiSettings4Line },
         { name: "Sign Out", link:"/loggingout", icon: MdOutlineLogout }
     ];
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     return (
-        <section className="flex gap-6">
-            <div className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72" : "w-16"
+        <section className="flex gap-6 ">
+            <div className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72 " : "w-16 "
                 } duration-500 text-gray-100 px-4`}>
 
-                <div className="pt-5  flex ">
+                <div className="pt-5 flex ">
                     {open && ( 
                         <div className={`px-4 text-white font-semibold flex justify-start ${open ? "w-72 text-xl" : "hidden overflow-hidden"} duration-500`}>
                             E-Book

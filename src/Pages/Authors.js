@@ -5,10 +5,10 @@ import TableLayout from "../components/TableLayout";
 import AuthorDescriptionBox from "../components/AuthorDescriptionBox";
 
 function Authors() {
-    
+
     const [Descriptionbox, setDescriptionbox] = useState(false);
     const [AuthorDetails, setAuthorDetails] = useState('');
-    
+
     const Keys = ["name", "nationality", "birthYear", "notableWorks"];
     const authors = [
         {
@@ -49,7 +49,7 @@ function Authors() {
             notableWorks: ["Murder on the Orient Express", "The Murder of Roger Ackroyd"],
         },
     ];
-    
+
     const openDescriptionBox = (author) => {
         setDescriptionbox(true);
         setAuthorDetails(author);
@@ -124,14 +124,12 @@ function Authors() {
                                     </th>
                                 </tr>
                             </thead>
-
                             <TableLayout keys={Keys} Data={authors} openDescriptionBox={openDescriptionBox} />
-
-
                         </table>
-                        {Descriptionbox && (<div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
-                            <AuthorDescriptionBox Author={AuthorDetails} closeDescriptionBox={closeDescriptionBox}/>
-                        </div>)}
+                        {Descriptionbox && (
+                            <div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
+                                <AuthorDescriptionBox Author={AuthorDetails} closeDescriptionBox={closeDescriptionBox} />
+                            </div>)}
                     </div>
 
                 </div>

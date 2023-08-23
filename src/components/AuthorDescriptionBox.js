@@ -1,6 +1,6 @@
 
 
-function AuthorDescriptionBox( {Author,closeDescriptionBox}) {
+function AuthorDescriptionBox({ Author, closeDescriptionBox }) {
     return (
         <div className="bg-white h-full">
             <div className="text-right ">

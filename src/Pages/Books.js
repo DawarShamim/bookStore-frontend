@@ -37,14 +37,14 @@ function Books() {
     };
     // const results =BookCatalogueService();
     // setResults(results);
-
     return (
-        <div className='flex bg-slate-700'>
+        <div className='flex flex-grow bg-slate-700'>
+        {/* <div className=""> */}
             <SideBar />
+        {/* </div>  */}
             <div className="flex-grow">
-
-                <div className="min-h-screen py-12 px-4">
-                    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div className="min-h-screen py-12 px-1">
+                    <div className="max-w-full mx-auto sm:px-1 lg:px-2">
                         <div >
                             <BooksCatalogue title={"Most Popular"} books={Results} Invert={true} />
                             <BooksCatalogue title={"New Arrivals"} books={Results} Invert={false} />

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { setJwtToken, getJwtToken, removeJwtToken } from '../Utils/cookieUtils';
-import loginService from "../Services/AuthService";
+import {loginService} from "../Services/AuthService";
 
 
 
