@@ -2,7 +2,7 @@ import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
 import { useState } from "react";
 import TableLayout from "../components/TableLayout";
-import StoreDescriptionBox from "../components/StoreDescriptionBox";
+import DescriptionBox from "../components/DescriptionBox";
 
 function Employees() {
     const [Descriptionbox, setDescriptionbox] = useState(false);
@@ -124,7 +124,7 @@ function Employees() {
                         </table>
                         {Descriptionbox && (
                             <div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
-                                <StoreDescriptionBox Store={EmployeeDetails} closeDescriptionBox={closeDescriptionBox} />
+                                <DescriptionBox DataObject={EmployeeDetails} closeDescriptionBox={closeDescriptionBox} />
                             </div>)}
                     </div>
                 </div>

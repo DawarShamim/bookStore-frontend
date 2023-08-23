@@ -2,7 +2,7 @@ import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
 import { useState } from "react";
 import TableLayout from "../components/TableLayout";
-import StoreDescriptionBox from "../components/StoreDescriptionBox";
+import DescriptionBox from "../components/DescriptionBox";
 
 function Stores() {
     const [Descriptionbox, setDescriptionbox] = useState(false);
@@ -125,7 +125,7 @@ function Stores() {
                         </table>
                         {Descriptionbox && (
                             <div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
-                                <StoreDescriptionBox Store={StoreDetails} closeDescriptionBox={closeDescriptionBox} />
+                                <DescriptionBox DataObject={StoreDetails} closeDescriptionBox={closeDescriptionBox} />
                             </div>)}
                     </div>
                 </div>

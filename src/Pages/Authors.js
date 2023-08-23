@@ -2,7 +2,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
 import TableLayout from "../components/TableLayout";
-import AuthorDescriptionBox from "../components/AuthorDescriptionBox";
+import DescriptionBox from "../components/DescriptionBox";
 
 function Authors() {
 
@@ -128,7 +128,7 @@ function Authors() {
                         </table>
                         {Descriptionbox && (
                             <div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
-                                <AuthorDescriptionBox Author={AuthorDetails} closeDescriptionBox={closeDescriptionBox} />
+                                <DescriptionBox DataObject={AuthorDetails} closeDescriptionBox={closeDescriptionBox} />
                             </div>)}
                     </div>
 
