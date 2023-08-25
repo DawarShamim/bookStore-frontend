@@ -1,14 +1,12 @@
 import React from "react";
-import { getJwtToken, removeJwtToken } from "./cookieUtils";
+import {removeToken } from "./cookieUtils";
 
 const Logout=()=>{
-    console.log("logout helper");
-    // console.log("called");
-    // const token =getJwtToken();
-    // console.log(token);
-    // removeJwtToken();
+    removeToken();
 
 }
 export default Logout;
+
+
 
 

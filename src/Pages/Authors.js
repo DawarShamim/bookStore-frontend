@@ -62,7 +62,7 @@ function Authors() {
         <div className='flex bg-slate-700'>
             <SideBar />
             <div className="flex-grow">
-                <div className="m-20 h-4/6">
+                <div className="m-10 h-5/6">
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg flex">
                         <table className="w-full text-sm text-left text-gray-500 ">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">

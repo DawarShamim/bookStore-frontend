@@ -5,11 +5,18 @@ import { RiSettings4Line } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import Logout from "../Utils/Helper";
 
 
 function SideBar() {
+    const navigate = useNavigate();
+
+    const handleSignOut = async() => {
+        await Logout();
+        navigate("/login");
+    };
+
     const menus = [
         { name: "Dashboard", link: "/ADashboard", icon: MdOutlineDashboard },
         { name: "Stores", link: "/Stores", icon: TbReportAnalytics, margin: true },
@@ -17,18 +24,19 @@ function SideBar() {
         { name: "Books", link: "/Books", icon: FiMessageSquare },
         { name: "Authors", link: "/Authors", icon: FiFolder },
         { name: "*Cart", link: "/", icon: FiShoppingCart },
-        { name: "*Saved", link: "/", icon: AiOutlineHeart, margin: true },
+        { name: "Favourites", link: "/Favourite", icon: AiOutlineHeart, margin: true },
         { name: "Setting", link: "/Settings", icon: RiSettings4Line },
-        { name: "Sign Out", link:"/loggingout", icon: MdOutlineLogout }
+        { name: "Sign Out", icon: MdOutlineLogout }
     ];
     const [open, setOpen] = useState(false);
     return (
         <section className="flex gap-6 z-50">
             <div className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72 " : "w-16 "
                 } duration-500 text-gray-100 px-4`}>
+                <div className="fixed ">
                 <div className="pt-5 flex ">
                     {open && ( 
-                        <div className={`px-4 text-white font-semibold flex justify-start ${open ? "w-72 text-xl" : "hidden overflow-hidden"} duration-500`}>
+                        <div className={`px-4 text-white font-semibold flex justify-start ${open ? "w-56 text-xl" : "hidden overflow-hidden"} duration-500`}>
                             E-Book
                         </div>
                          )} 
@@ -43,6 +51,7 @@ function SideBar() {
                     {menus?.map((menu, i) => (
                         <Link
                             to={menu?.link}
+                            onClick={menu.name === "Sign Out" ? handleSignOut : undefined}
                             key={i}
                             className={` ${menu?.margin && "mt-5"
                                 } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
@@ -65,6 +74,7 @@ function SideBar() {
                             </h2>
                         </Link>
                     ))}
+                </div>
                 </div>
             </div>
         </section>

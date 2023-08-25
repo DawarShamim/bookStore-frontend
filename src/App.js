@@ -3,7 +3,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ToastContainer from './components/ToastContainer';
 
-import Page404 from './Pages/404Page';
 import NewBook from './Pages/NewBook';
 import Home from "./Pages/HomePage";
 import LoginPage from "./Pages/LoginPage";
@@ -18,28 +17,41 @@ import Employees from './Pages/Employees';
 
 import Trial from './Pages/Trial';
 import Trying from './Pages/Trying';
+import { PrivateRoute } from './Utils/PrivateRoute';
+import CreateNewSales from './Pages/CreateNewSalesPage';
+import Favourites from './Pages/Favourites';
+import Page400 from './Pages/400Page';
 
 function App() {
   return (
     <Router>
       <div className="App">
-      <ToastContainer />
+        <ToastContainer />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/NewBook" element={<NewBook />} />
           <Route path="/Settings" element={<Settings />} />
-          <Route path ="/ADashboard" element={<AdminDash/>}/>
-          <Route path ="/Stores" element ={<Stores/>}/>
-          <Route path ="/Signup" element ={<Signup/>}/>
-          <Route path ="/Books" element ={<Books/>}/>
-          <Route path="/Authors" element={<Authors />}/>
-          <Route path="/Employees" element={<Employees/>}/>
+          <Route path="/ADashboard" element={<AdminDash />} />
+          <Route path="/Stores" element={<Stores />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Books" element={<Books />} />
+          <Route path="/Authors" element={<Authors />} />
+          <Route path="/Employees" element={<Employees />} />
+          <Route path="/GenerateSaleReceipt" element={<CreateNewSales />} />
+          <Route path="/Favourite" element={<Favourites />} />
+          <Route path="/Forbidden" element={<Page400  type ={"403"}/>} />
           
-          <Route path="*" element={<Page404 />} />
-          
+
+          <Route path="*" element={<Page400 />} />
+
           <Route path="/try" element={<Trying />} />
-          <Route path="/Trial" element={<Trial />} />
+          {/* <ProtectedRoute exact path="/Trail" component={<Trial/>} /> */}
+          <Route exact path='/' element={<PrivateRoute  roles={["employee"]}/>}>
+            <Route path="/Trial" element={<Trial />} />
+          </Route>
+          {/* <Route exact path='/' element={<Home />} /> */}
+
         </Routes>
       </div>
     </Router>

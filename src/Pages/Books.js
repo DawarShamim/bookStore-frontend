@@ -35,6 +35,7 @@ function Books() {
 
         return results;
     };
+    
     // const results =BookCatalogueService();
     // setResults(results);
     return (
@@ -46,7 +47,7 @@ function Books() {
                 <div className="min-h-screen py-12 px-1">
                     <div className="max-w-full mx-auto sm:px-1 lg:px-2">
                         <div >
-                            <BooksCatalogue title={"Most Popular"} books={Results} Invert={true} />
+                            <BooksCatalogue title={"Most Popular Books"} books={Results} Invert={true} />
                             <BooksCatalogue title={"New Arrivals"} books={Results} Invert={false} />
                             <BooksCatalogue title={"For Kids"} books={Results} Invert={true} />
                         </div>

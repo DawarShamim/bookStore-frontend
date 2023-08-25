@@ -18,7 +18,7 @@ export const setJwtToken = (token) => {
   //   httpOnly: true
   // });
   const decoded = jwt_decode(token);
-  console.log("decoded",decoded.role);
+  console.log("role",decoded.role);
   cookie.set(USER_ACCESS_KEY, decoded.role);
   // cookie.set(USER_ACCESS_KEY, decoded.role, {
   //   expires: expirationDate,
@@ -36,7 +36,7 @@ export const getUserAccess = () => {
   return cookie.get(USER_ACCESS_KEY);
 };
 
-export const removeJwtToken = () => {
+export const removeToken = () => {
   cookie.remove(TOKEN_KEY);
   cookie.remove(USER_ACCESS_KEY);
 };
