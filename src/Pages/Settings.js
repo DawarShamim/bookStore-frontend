@@ -20,7 +20,7 @@ function Settings() {
                             </div>
                         </div>
                         <div>
-                            <Modal buttonTitle={"Update Profile"}></Modal>
+                            <Modal ModalTitle={"Update Profile"} buttonTitle={"Update Profile"}></Modal>
                         </div>
                     </div>
                 </div>

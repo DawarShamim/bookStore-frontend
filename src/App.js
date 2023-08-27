@@ -21,6 +21,7 @@ import { PrivateRoute } from './Utils/PrivateRoute';
 import CreateNewSales from './Pages/CreateNewSalesPage';
 import Favourites from './Pages/Favourites';
 import Page400 from './Pages/400Page';
+import BookReview from './Pages/BookReview';
 
 function App() {
   return (
@@ -40,6 +41,8 @@ function App() {
           <Route path="/Employees" element={<Employees />} />
           <Route path="/GenerateSaleReceipt" element={<CreateNewSales />} />
           <Route path="/Favourite" element={<Favourites />} />
+          <Route path="/BookDetails" element={<BookReview/>} />
+          
           <Route path="/Forbidden" element={<Page400  type ={"403"}/>} />
           
 

@@ -4,11 +4,6 @@ import CardComponent from './CardComponent';
 
 
 const BooksCatalogue = ({ title, books, Invert }) => {
-  //   const books = [
-  //     { id: 1, title: 'Book 1', imageUrl: BookImage },
-  //     { id: 2, title: 'Book 2', imageUrl: BookImage },
-  //     // Add more books
-  //   ];
 
   return (
     <div className={Invert ? `bg-[#0e0e0e] min-h-screen py-12 px-6` : "bg-[#b5bcc9] min-h-screen py-12 px-6"}>

@@ -2,6 +2,41 @@ import React, { useState } from "react";
 
 export default function Modal({ buttonTitle, form }) {
     const [showModal, setShowModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [FormData, setFormData] = useState({});
+    console.log(form);
+
+    // Check LOG:
+
+    // setFormData(prevFormData=>({
+    //     ...prevFormData,form
+    // }))
+
+
+
+    const handleFieldChange = (event) => {
+
+        const { name, value } = event.target;
+        console.log(name, value);
+        setFormData(prevFormData => ({
+            ...prevFormData, [name]: value
+        }));
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSubmit();
+        }
+    };
+    const handleSubmit = async () => {
+        //Important Uncomment
+        // const isValid = Validator();
+        setIsLoading(true);
+        console.log(FormData);
+        setIsLoading(false);
+    };
+
+
     return (
         <>
             <button
@@ -11,8 +46,6 @@ export default function Modal({ buttonTitle, form }) {
             >
                 {buttonTitle}
             </button>
-
-
             {showModal ? (
                 <>
                     <div
@@ -37,35 +70,18 @@ export default function Modal({ buttonTitle, form }) {
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto">
-                                    {/* <label htmlFor="name" className="block text-slate-500 text-lg font-medium mb-1">
-                                        Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        className="w-full p-2 border border-slate-200 rounded focus:outline-none focus:border-blue-500"
-                                    // Add value and onChange props as needed
-                                    />
-                                    <label htmlFor="email" className="block text-slate-500 text-lg font-medium mb-1 mt-4">
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        className="w-full p-2 border border-slate-200 rounded focus:outline-none focus:border-blue-500"
-                                    // Add value and onChange props as needed
-                                    /> */}
-                                    {Object.keys(form).map((key) => (
-                                        <div key={key}>
-                                            <label htmlFor={key} className="block text-slate-500 text-lg font-medium mb-1 mt-4">{key}</label>
+                                    {Object.keys(FormData).map((key) => (
+                                        <div key={key} className="grid grid-cols-2 p-1">
+
+                                            <label htmlFor={key} className="block w-7 text-slate-500 text-lg font-medium mb-1 mt-4">{key}</label>
                                             <input
                                                 type="text"
                                                 id={key}
                                                 name={key}
-                                                value={form[key]}
-                                                className="w-full p-2 border border-slate-200 rounded focus:outline-none focus:border-blue-500"/>
+                                                value={FormData[key]}
+                                                onChange={handleFieldChange}
+                                                onKeyDown={handleKeyDown}
+                                                className="w-full p-2 border border-slate-200 rounded focus:outline-none focus:border-blue-500" />
                                         </div>))}
 
 
@@ -81,10 +97,14 @@ export default function Modal({ buttonTitle, form }) {
                                     </button>
                                     <button
                                         className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button"
-                                        onClick={() => console.log(form)}
+                                        onClick={handleSubmit}
+                                        disabled={isLoading} // Disable the button while loading
+                                    // className={`tracking-wider font-bold w-full text-white ${isLoading
+                                    //     ? 'bg-gray-300 cursor-not-allowed' // Change button style when loading
+                                    //     : 'bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80'
+                                    //     } rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2`}
                                     >
-                                        Save Changes
+                                        {isLoading ? 'Loading...' : 'Save Changes'}
                                     </button>
                                 </div>
                             </div>

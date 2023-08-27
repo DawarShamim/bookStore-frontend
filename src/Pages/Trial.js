@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { PrivateRoute,CustomRender } from "../Utils/PrivateRoute";
 
 function Trial() {
     const [searchInputAuthor, setSearchInputAuthor] = useState("");
@@ -21,7 +22,6 @@ function Trial() {
 
         // ... other countries
     ];
-
     const handleAuthorChange = (e) => {
         setSearchInputAuthor(e.target.value);
         setSelectedCountry(null);
@@ -29,7 +29,6 @@ function Trial() {
             Disabler("All")
         }
     };
-
     const handleDescriptionChange = (e) => {
         setSearchInputDescription(e.target.value);
         setSelectedCountry(null);
@@ -37,7 +36,6 @@ function Trial() {
             Disabler("All")
         }
     };
-
     const handleWebsiteChange = (e) => {
         setSearchInputWebsite(e.target.value);
         setSelectedCountry(null);
@@ -45,7 +43,6 @@ function Trial() {
             Disabler("All")
         }
     };
-
     const Disabler = (Enabledfield) => {
         setDisablerStatus(true);
         switch (Enabledfield) {
@@ -75,15 +72,12 @@ function Trial() {
                 break;
         }
     }
-
-
     const handleCountrySelect = (index, country) => {
         setSearchInputAuthor(country.author);
         setSearchInputDescription(country.description);
         setSearchInputWebsite(country.website);
         setSelectedCountry(country);
     };
-
     function searchList() {
         let filteredCountries = countries.filter((country) => {
             return (
@@ -105,8 +99,13 @@ function Trial() {
     }
 
     return (
-
         <section className='flex p-10 h-screen justify-between  '>
+
+        <CustomRender roles={["guest"]} children={(
+        <div className="h-screen bg-slate-700">
+        <button className="bg-black text-white">dawar</button>
+            <p>sdghasghjg</p>
+        </div>)}/>
             <div className="App w-1/2 flex justify-center items-center bg-slate-700 flex-col m-0.5">
                 <label className='relative cursor-pointer mb-4'>
                     <input

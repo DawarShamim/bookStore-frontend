@@ -3,10 +3,16 @@ import SideBar from "../components/SideBar";
 import { useState } from "react";
 import TableLayout from "../components/TableLayout";
 import DescriptionBox from "../components/DescriptionBox";
+import { CustomRender } from "../Utils/PrivateRoute";
+import Modal from "../components/Modal";
 
 function Stores() {
     const [Descriptionbox, setDescriptionbox] = useState(false);
     const [StoreDetails, setStoreDetails] = useState('');
+    const [DataObject, setFormData] = useState({
+        Email: "jklj",
+        Password: "asdkj",
+    });
 
     const StoreData = [
         {
@@ -45,8 +51,6 @@ function Stores() {
     ];
 
     const Keys = ["name", "city", "sales", "employees"];
-
-
     const openDescriptionBox = (Store) => {
         setDescriptionbox(true);
         setStoreDetails(Store);
@@ -61,75 +65,90 @@ function Stores() {
             <SideBar />
             <div className="flex-grow">
                 <div className="m-10 h-5/6">
-                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg flex">
-                        <table className="w-full text-sm text-left text-gray-500 ">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-                                <tr>
-                                    <th scope="col" className="px-6 py-3">
-                                        Store name
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        <div className="flex items-center">
-                                            City
-                                            <a href="#">
-                                                <svg
-                                                    className="w-3 h-3 ml-1.5"
-                                                    aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        <div className="flex items-center">
-                                            Employees
-                                            <a href="#">
-                                                <svg
-                                                    className="w-3 h-3 ml-1.5"
-                                                    aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        <div className="flex items-center">
-                                            Sales
-                                            <a href="#">
-                                                <svg
-                                                    className="w-3 h-3 ml-1.5"
-                                                    aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        <span className="sr-only">Edit</span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <TableLayout keys={Keys} Data={StoreData} openDescriptionBox={openDescriptionBox} />
-                        </table>
-                        {Descriptionbox && (
-                            <div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
-                                <DescriptionBox DataObject={StoreDetails} closeDescriptionBox={closeDescriptionBox} />
-                            </div>)}
+                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg ">
+                        <div className="p-3 justify-between flex">
+                            <h1 className="font-bold text-gray-50 text-4xl">Stores</h1>
+                            <CustomRender roles={["admin"]} children={(
+                                <Modal
+                                    ModalTitle={"Add New Store"}
+                                    buttonTitle={"Add New Store"}
+                                    form={DataObject}
+                                    modaltype={"Add New Store"} />)} />
+                        </div>
+                        <div className="text-right">
+                            <p>
+                                Search bar
+                            </p>
+                        </div>
+                        <div className="flex overflow-x-hidden sm:rounded-lg">
+                            <table className="w-full text-sm text-left text-gray-500 ">
+                                <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
+                                    <tr>
+                                        <th scope="col" className="px-6 py-3">
+                                            Store name
+                                        </th>
+                                        <th scope="col" className="px-6 py-3">
+                                            <div className="flex items-center">
+                                                City
+                                                <a href="#">
+                                                    <svg
+                                                        className="w-3 h-3 ml-1.5"
+                                                        aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </th>
+                                        <th scope="col" className="px-6 py-3">
+                                            <div className="flex items-center">
+                                                Employees
+                                                <a href="#">
+                                                    <svg
+                                                        className="w-3 h-3 ml-1.5"
+                                                        aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </th>
+                                        <th scope="col" className="px-6 py-3">
+                                            <div className="flex items-center">
+                                                Sales
+                                                <a href="#">
+                                                    <svg
+                                                        className="w-3 h-3 ml-1.5"
+                                                        aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <TableLayout keys={Keys} Data={StoreData} openDescriptionBox={openDescriptionBox} />
+                            </table>
+                            {Descriptionbox && (
+                                <div className="w-3/4 p-2 border-l-2 text-sm text-gray-700 bg-gray-200 ">
+                                    <DescriptionBox DataObject={StoreDetails} closeDescriptionBox={closeDescriptionBox} />
+                                </div>)}
+                        </div>
                     </div>
+
                 </div>
                 <Footer />
+
             </div>
         </div>);
 };

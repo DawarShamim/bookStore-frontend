@@ -4,6 +4,7 @@ import TableLayout from "../components/TableLayout";
 import { FiArrowLeft } from "react-icons/fi";
 import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
 import { PrivateRoute } from "../Utils/PrivateRoute";
+import Footer from "../components/Footer";
 
 function Page400({ type }) {
     const [showAlert, setShowAlert] = useState(false);
@@ -40,12 +41,7 @@ function Page400({ type }) {
                     Go back
                 </button>
             </div>
-            <PrivateRoute roles={["employee"]}>
-                <div className="flex flex-col items-center justify-center h-screen bg-pink-100">
-
-                    <button onClick={handleShowAlert}>Show Alert</button>
-                </div>
-                </PrivateRoute>
+            <Footer />
 
         </div>
     );
