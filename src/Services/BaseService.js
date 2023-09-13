@@ -1,9 +1,11 @@
 
 import axios from 'axios';
 // Create an axios instance with default configuration
+export const baseurl= 'http://localhost:8080';
 
 const AxiosInstance = axios.create({
-    baseURL: 'https://enchanting-ruby-nightingale.cyclic.app/',
+    // baseURL: 'https://enchanting-ruby-nightingale.cyclic.app/',
+    baseURL: baseurl,
     timeout: 10000,
 });
 
@@ -22,3 +24,4 @@ async function fetchDataWithHeaders() {
         console.error('Error:', error.message);
     }
 }
+

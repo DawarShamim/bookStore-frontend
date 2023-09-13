@@ -14,22 +14,25 @@ import CardComponent from './CardComponent';
 import BookCard from './BookCard';
 SwiperCore.use([Navigation]);
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ resultsPromise }) => {
+    const results = resultsPromise;
+    console.log("results",results);
+
     return (
 
         <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={50}
-            slidesPerView={6}
+            slidesPerView={4}
             navigation
-            pagination={{ clickable: true,bulletActiveClass: 'pagination-active'}}
+            pagination={{ clickable: true, bulletActiveClass: 'pagination-active' }}
             scrollbar={{ draggable: true }}
             className='cursor-pointer'
         // onSwiper={(swiper) => console.log(swiper)}
         // onSlideChange={() => console.log('slide change')}
         >
-            {results.map((result, index) => (
+            {results.SwiperBooks.map((result, index) => (
                 <div className="mb-10">
                     <SwiperSlide key={index}>
                         {/* <CardComponent item={result}> */}

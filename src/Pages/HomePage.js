@@ -3,13 +3,30 @@ import Navbar from '../components/NavBar';
 import HomeResult from '../components/HomeResult';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import Footer from '../components/Footer';
+import PublicService from '../Services/PublicServices';
 
 function Home() {
   const [searchText, setSearchText] = useState('');
   const [Results, setResults] = useState([]);
+  const [newResults, setNewResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Add a loading state
+
   useEffect(() => {
-    setResults(generateRandomResults(20));
+    const fetchData = async () => {
+      try {
+        const data = await PublicService(); // Assuming PublicService returns data
+        setResults(data);
+        console.log("DATA",data);
+        setNewResults(generateRandomResults(20));
+        setIsLoading(false); // Set isLoading to false when data fetching is complete
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setIsLoading(false); // Set isLoading to false in case of an error
+      }
+    };
+    fetchData(); // Call the fetchData function
   }, []);
+
   // Function to generate random search results
   const generateRandomResults = (count) => {
     const results = [];
@@ -36,9 +53,8 @@ function Home() {
     return results;
   };
 
-
-  const Secondary = Results.slice(0, 6);
-
+  const Secondary = newResults.slice(0, 6);
+  
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleSubmit();
@@ -57,6 +73,11 @@ function Home() {
   const handleSearch = (value) => {
     setSearchText(value);
   };
+
+  if (isLoading) {
+    // Render a loading indicator or message while data is being fetched
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="bg-slate-700">
@@ -81,7 +102,7 @@ function Home() {
           <div className='p-2'>
             <h2 className="text-2xl font-semibold mb-6 text-white">Featured Books</h2>
           </div>
-          <HomeResult results={Results} />
+          <HomeResult resultsPromise={Results} />
         </section>
 
         <div className="flex p-10 space-x-9 ">
@@ -109,7 +130,7 @@ function Home() {
           <section className="py-5">
             <div className="container mx-auto text-center">
               <h2 className="text-2xl font-semibold mb-6 text-white">Search Results</h2>
-              {(Results.length >= 6) && (
+              {(newResults.length >= 6) && (
                 <div className='text-1xl font-semibold mb-6 text-white'> Top 6 Most similar Results</div>)}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Repeat this block for each featured book */}
